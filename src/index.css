@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #0EA5E9;
+html {
+  background-image: url(./notebook.jpg);
+  background-position: 0px -61px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

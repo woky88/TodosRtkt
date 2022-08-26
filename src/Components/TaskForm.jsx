@@ -30,10 +30,15 @@ function TaskForm() {
     if (params.id) {
       dispatch(editTask(task))
     } else {
-      dispatch(addTask({
-        ...task,
-        id: uuid()
-      }))
+
+      if (tasks.length < 6) {
+        dispatch(addTask({
+          ...task,
+          id: uuid()
+        }))
+      } else {
+        alert("You can`t add more than 6 tasks")
+      }
     }
     navigate('/')
   }

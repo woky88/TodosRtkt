@@ -1,31 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
 
 body {
-  font-family: 'DynaPuff', cursive;
+  font-family: 'Caveat', cursive;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   column-gap: 5rem;
-  row-gap: 1rem;
-  -webkit-box-shadow: 0px 0px 5px 5px #333333;
-  box-shadow: inset 0px 0px 5px 5px #333333;
-  background: #E6621f;
-  width: 80%;
+  row-gap: .7rem;
+  width: 70.3%;
   height: 80%;
 }
 
 .card {
-  color: #fff;
-  border: 10px outset #1b00ff;
-  margin: 1rem;
+  color: #333333;
   padding: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   text-align: center;
-  border-radius: 29px;
   max-height: max-content;
-  box-shadow: inset 3px 3px 3px rgb(0 0 0), inset 3px 3px 3px rgb(0 0 0 / 100%), 3px 3px 3px rgb(0 0 0 / 100%)
 }
 
 .card button {
