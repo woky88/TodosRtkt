@@ -1,6 +1,9 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { addTask } from '../app/features/tasks/taskSlice.js'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addTask, editTask } from '../app/features/tasks/taskSlice.js'
+import { v4 as uuid } from 'uuid'
+import { useNavigate, useParams } from 'react-router-dom'
+import style from './TaskForm.module.css'
 
 function TaskForm() {
 
@@ -10,6 +13,9 @@ function TaskForm() {
   })
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const params = useParams()
+  const tasks = useSelector(state => state.tasks)
 
   const handleChange = (e) => {
     setTask({
@@ -20,15 +26,50 @@ function TaskForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(addTask(task))
+
+    if (params.id) {
+      dispatch(editTask(task))
+    } else {
+      dispatch(addTask({
+        ...task,
+        id: uuid()
+      }))
+    }
+    navigate('/')
   }
 
+  useEffect(() => {
+    if (params.id) {
+      setTask(tasks.find(task => task.id === params.id))
+    }
+  }, [])
+
   return (
-    <form onSubmit={e => handleSubmit(e)}>
-      <input onChange={e => handleChange(e)} name='title' type="text" placeholder="title" />
-      <textarea onChange={e => handleChange(e)} name="description" placeholder="description"></textarea>
-      <button type="submit">Submit</button>
-    </form>
+    <div className={style.container}>
+      <form className={style.form} onSubmit={e => handleSubmit(e)}>
+        <div className={style.title}>
+          <label htmlFor="title"> Title :</label>
+          <input
+            onChange={e => handleChange(e)}
+            name='title' type="text"
+            placeholder="title"
+            value={task.title}
+            className={style.input}
+          />
+        </div>
+        <div className={style.title}>
+          <label htmlFor="title"> Description :</label>
+          <textarea
+            onChange={e => handleChange(e)}
+            name="description"
+            placeholder="description"
+            value={task.description}
+            className={style.input}
+          />
+        </div>
+        <button className={style.btn} type="submit"><h1>Submit</h1></button>
+      </form>
+    </div>
   )
 }
 
