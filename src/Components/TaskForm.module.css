@@ -1,10 +1,6 @@
 .container {
   height: 25rem;
-  box-shadow: inset 3px 3px 3px rgb(0 0 0), inset 3px 3px 3px rgb(0 0 0 / 100%), 3px 3px 3px rgb(0 0 0 / 100%);
-  border-radius: 29px;
-  border: 10px outset #1b00ff;
   margin: 1rem;
-  background: #E6621f;
 }
 
 .form {
@@ -36,15 +32,19 @@
 
 .title label {
   text-transform: capitalize;
+  margin-top: 1rem;
 }
 
 .title input {
   width: 60%;
+  margin-left: 12rem;
+  border: solid 2px black;
 }
 
 .title textarea {
-  height: 10rem;
+  height: 15rem;
   width: 50%;
+  border: solid 2px black;
 }
 
 .btn {
@@ -68,4 +68,5 @@
   background-color: black;
   border-radius: 10px;
   border: .3rem solid white;
+  color: white;
 }
